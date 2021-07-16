@@ -12,7 +12,7 @@ class _HomePageState extends State<HomePage> {
     "Terceiro item",
   ];
 
-  deleteAndEditNote(int index) async {
+  _deleteAndEditNote(int index) async {
     var response = await Navigator.pushNamed(context, "/create-note",
         arguments: notes[index]);
     if (response != null) {
@@ -23,6 +23,15 @@ class _HomePageState extends State<HomePage> {
         notes[index] = description;
       }
       setState(() {});
+    }
+  }
+
+  _createNote() async {
+    final description = await Navigator.pushNamed(context, "/create-note");
+    if (description != null) {
+      setState(() {
+        notes.add(description as String);
+      });
     }
   }
 
@@ -42,23 +51,14 @@ class _HomePageState extends State<HomePage> {
                       const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                   child: CardWidget(
                     note: notes[i],
-                    onTap: () => deleteAndEditNote(i),
+                    onTap: () => _deleteAndEditNote(i),
                   )),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () async {
-          final description =
-              await Navigator.pushNamed(context, "/create-note");
-          if (description != null) {
-            setState(() {
-              notes.add(description as String);
-            });
-          }
-          print("Minha nota $description");
-        },
+        onPressed: _createNote,
       ),
     );
   }
