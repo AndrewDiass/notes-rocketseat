@@ -33,9 +33,7 @@ class _CreateNotePageState extends State<CreateNotePage> {
           if (isEdit)
             IconButton(
               icon: Icon(Icons.delete),
-              onPressed: () {
-                Navigator.pop(context, "");
-              },
+              onPressed: () => Navigator.pop(context, ""),
             ),
         ],
       ),
@@ -48,7 +46,6 @@ class _CreateNotePageState extends State<CreateNotePage> {
               controller: textController,
               maxLines: null,
               onChanged: (value) {
-                print(value);
                 setState(() {
                   description = value;
                 });
@@ -79,9 +76,7 @@ class _CreateNotePageState extends State<CreateNotePage> {
               SizedBox(
                 width: 200,
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context, description);
-                  },
+                  onPressed: () => Navigator.pop(context, description),
                   child: Text("Salvar"),
                 ),
               ),
