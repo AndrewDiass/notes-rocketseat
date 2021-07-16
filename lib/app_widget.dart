@@ -15,11 +15,6 @@ class AppWidget extends StatelessWidget {
           appBarTheme: AppBarTheme(backgroundColor: Color(0xFF8257E5)),
           floatingActionButtonTheme: FloatingActionButtonThemeData(
               backgroundColor: Color(0xFF04D361))),
-      darkTheme: ThemeData(
-        primarySwatch: Colors.green,
-        scaffoldBackgroundColor: Colors.grey[800],
-      ),
-      themeMode: ThemeMode.light,
       title: "Notes",
       initialRoute: "/splash",
       routes: {
