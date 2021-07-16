@@ -42,23 +42,36 @@ class _HomePageState extends State<HomePage> {
         title: Text("Notes"),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
+      body: SafeArea(
+        bottom: true,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            for (var i = 0; i < notes.length; i++)
-              Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-                  child: CardWidget(
-                    note: notes[i],
-                    onTap: () => _deleteAndEditNote(i),
-                  )),
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  for (var i = 0; i < notes.length; i++)
+                    Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 4, horizontal: 8),
+                        child: CardWidget(
+                          note: notes[i],
+                          onTap: () => _deleteAndEditNote(i),
+                        )),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(bottom: 16),
+              width: MediaQuery.of(context).size.width - 20,
+              height: 40,
+              child: ElevatedButton(
+                onPressed: _createNote,
+                child: Text("Criar"),
+              ),
+            ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: _createNote,
       ),
     );
   }

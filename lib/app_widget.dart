@@ -11,6 +11,10 @@ class AppWidget extends StatelessWidget {
           textTheme: TextTheme(
             bodyText1: TextStyle(color: Colors.orange),
           ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(Color(0xFF04D361)))),
           scaffoldBackgroundColor: Color(0xFF453973),
           appBarTheme: AppBarTheme(backgroundColor: Color(0xFF8257E5)),
           floatingActionButtonTheme: FloatingActionButtonThemeData(
